@@ -7,7 +7,7 @@ import Navigationbar from './components/Navigationbar';
 import Home from "./components/Home";
 import About from "./components/About";
 import Contact from "./components/Contact";
-
+import {Jumbotron} from './components/Jumbotron';
 import './App.css';
 
 // import 'bootstrap/dist/css/bootstrap.min.css';
@@ -18,7 +18,6 @@ class App extends Component {
     super(props)
 
     this.state = {
-      items: [],
       isLoading: false,
     }
   }
@@ -29,13 +28,12 @@ class App extends Component {
       .then(json => {
         this.setState({
           isLoaded: true,
-          items: json,
         })
       })
   }
   render() {
 
-    const { isLoaded, items } = this.state
+    const { isLoaded } = this.state
 
     if (!isLoaded) {
       return <div>Loading....</div>
@@ -43,6 +41,7 @@ class App extends Component {
     return (
       <React.Fragment>
         <Navigationbar />
+        <Jumbotron />
         <Router>
           <div className="App">
             <Switch>

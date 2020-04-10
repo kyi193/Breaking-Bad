@@ -8,7 +8,7 @@ const Styles = styled.div`
   }
 
   .navbar-brand {
-    font-size: 45px;
+    font-size: 30px;
   }
   .navbar-brand, .navbar-nav .nav-link {
     color: #bbb;
