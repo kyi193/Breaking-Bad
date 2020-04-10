@@ -6,8 +6,8 @@ import styled from "styled-components";
 import spinner from "../assets/spinner.gif"
 
 const Sprite = styled.img`
-  width: 5em;
-  height: 5em;
+  width: 12em;
+  height: 15em;
   display: none;
 `;
 
