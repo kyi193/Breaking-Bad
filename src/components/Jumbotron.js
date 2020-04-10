@@ -9,7 +9,7 @@ const Styles = styled.div`
   .jumbo  {
     background-size: cover;
     color: #ccc;
-    height: 180px;
+    height: 30px;
     position: relative;
     z-index: -2;
   }
@@ -22,7 +22,7 @@ const Styles = styled.div`
     left: 0;
     bottom: 0;
     right: 0;
-    z-index: -1;
+    z-index: -1;  
   }
 `;
 export const Jumbotron = () => (

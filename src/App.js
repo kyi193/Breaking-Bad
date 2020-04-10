@@ -7,7 +7,7 @@ import Navigationbar from './components/Navigationbar';
 import Home from "./components/Home";
 import About from "./components/About";
 import Contact from "./components/Contact";
-import {Jumbotron} from './components/Jumbotron';
+import { Jumbotron } from './components/Jumbotron';
 import './App.css';
 
 // import 'bootstrap/dist/css/bootstrap.min.css';
@@ -19,7 +19,9 @@ class App extends Component {
 
     this.state = {
       isLoading: false,
+      searchResult: "Placeholder"
     }
+    this.updateSearch = this.updateSearch.bind(this)
   }
 
   componentDidMount() {
@@ -31,6 +33,15 @@ class App extends Component {
         })
       })
   }
+
+  //create updatesearch to set state
+  updateSearch(event) {
+    this.setState({
+      searchResult: event.target.value
+    });
+  }
+
+
   render() {
 
     const { isLoaded } = this.state
@@ -40,14 +51,22 @@ class App extends Component {
     }
     return (
       <React.Fragment>
-        <Navigationbar />
+        {/* pass updateSearch function into navigation bar */}
+        <Navigationbar updateSearch={this.updateSearch} />
         <Jumbotron />
         <Router>
           <div className="App">
             <Switch>
-              <Route exact path="/" component={ Home } />
-              <Route path ="/about" component={ About } />
-              <Route path ="/contact" component={ Contact } />
+              {/* pass search result into home */}
+              <Route exact path="/"
+                render={(props) =>
+                  <Home
+                    {...props}
+                    searchResult={this.state.searchResult}
+                  />}
+              />
+              <Route path="/about" component={About} />
+              <Route path="/contact" component={Contact} />
             </Switch>
           </div>
         </Router>

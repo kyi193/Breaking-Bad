@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Nav, Navbar, Form, FormControl, Button } from 'react-bootstrap';
+import { Nav, Navbar, Form, Button } from 'react-bootstrap';
 import styled from 'styled-components';
 
 const Styles = styled.div`
@@ -20,6 +20,7 @@ const Styles = styled.div`
 `;
 
 export default class Navigationbar extends Component {
+ 
   render() {
     return (
       <Styles>
@@ -33,7 +34,13 @@ export default class Navigationbar extends Component {
               <Nav.Item><Nav.Link href="/contact">Contact</Nav.Link></Nav.Item>
             </Nav>
             <Form inline>
-              <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+              <Form.Control 
+                type="text" 
+                placeholder="Search" 
+                className="mr-sm-2" 
+                // pass update search into onchange
+                onChange = {this.props.updateSearch}
+              />
               <Button variant="outline-success">Search</Button>
             </Form>
           </Navbar.Collapse>
