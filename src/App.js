@@ -1,6 +1,16 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+
+
+
+import Navigationbar from './components/Navigationbar';
+import Home from "./components/Home";
+import About from "./components/About";
+import Contact from "./components/Contact";
+
 import './App.css';
+
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends Component {
 
@@ -26,24 +36,23 @@ class App extends Component {
   render() {
 
     const { isLoaded, items } = this.state
-    
-    if(!isLoaded) {
+
+    if (!isLoaded) {
       return <div>Loading....</div>
     }
     return (
-      <div className="App">
-        <ul>
-          {items.map(item => (
-            <div key = {item.char_id}>
-              Name: {item.name}
-              <br/>
-              Birthday: {item.birthday}
-              <br/>
-              <img className = "img" src = {item.img} />
-            </div>
-          ))}
-        </ul>
-      </div>
+      <React.Fragment>
+        <Navigationbar />
+        <Router>
+          <div className="App">
+            <Switch>
+              <Route exact path="/" component={ Home } />
+              <Route path ="/about" component={ About } />
+              <Route path ="/contact" component={ Contact } />
+            </Switch>
+          </div>
+        </Router>
+      </React.Fragment>
     );
   }
 }
