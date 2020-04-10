@@ -9,13 +9,13 @@ const Styles = styled.div`
   .jumbo  {
     background-size: cover;
     color: #ccc;
-    height: 100px;
+    height: 180px;
     position: relative;
     z-index: -2;
   }
 
   .overlay {
-    background-color: #000;
+    background-color: #0D3E10 !important;
     opacity: 0.6;
     position: absolute;
     top: 0;
@@ -30,7 +30,7 @@ export const Jumbotron = () => (
     <Jumbo fluid className="jumbo">
       <div className="overlay">
         <Container>
-          <h1>Welcome</h1>
+          <h1>Welcome!</h1>
           <p>Learn about all your favorite Breaking Bad Characters Here!</p>
         </Container>
       </div>

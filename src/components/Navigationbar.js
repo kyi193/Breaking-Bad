@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Nav, Navbar } from 'react-bootstrap';
+import { Nav, Navbar, Form, FormControl, Button } from 'react-bootstrap';
 import styled from 'styled-components';
 
 const Styles = styled.div`
@@ -32,6 +32,10 @@ export default class Navigationbar extends Component {
               <Nav.Item><Nav.Link href="/about">About</Nav.Link></Nav.Item>
               <Nav.Item><Nav.Link href="/contact">Contact</Nav.Link></Nav.Item>
             </Nav>
+            <Form inline>
+              <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+              <Button variant="outline-success">Search</Button>
+            </Form>
           </Navbar.Collapse>
         </Navbar>
       </Styles>
