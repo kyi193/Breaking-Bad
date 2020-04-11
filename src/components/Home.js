@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import * as data from '../data/characters.json';
 
 import CharacterCard from "./CharacterCard";
 
 const DEFAULT_QUERY = '';
+const USE_MOCK_DATA = true;
 
 export default class Home extends Component {
   constructor(props) {
@@ -19,14 +21,21 @@ export default class Home extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log('HOME componentDidUpdate')
     if(prevProps.searchQuery !== this.props.searchQuery) {
-      console.log("new search query: ", this.props.searchQuery)
       this.fetchCharacters(this.props.searchQuery);
     }
   }
 
   fetchCharacters(queryName='') {
+    if(USE_MOCK_DATA) {
+      
+      this.setState({
+        characters: data.characters
+      })
+
+      return;
+    }
+
     axios.get(`https://www.breakingbadapi.com/api/characters?name=${queryName}`)
       .then((json) => {
         this.setState({
