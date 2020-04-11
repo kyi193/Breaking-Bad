@@ -19,52 +19,57 @@ class App extends Component {
 
     this.state = {
       isLoading: false,
-      searchResult: "Placeholder"
+      searchResult: '',
+      searchQuery: ''
+
     }
-    this.updateSearch = this.updateSearch.bind(this)
+    this.updateSearch = this.updateSearch.bind(this);
+    this.submitSearch = this.submitSearch.bind(this);
   }
 
   componentDidMount() {
-    fetch('https://www.breakingbadapi.com/api/characters/')
-      .then(res => res.json())
-      .then(json => {
-        this.setState({
-          isLoaded: true,
-        })
-      })
+    // fetch('https://www.breakingbadapi.com/api/characters/')
+    //   .then(res => res.json())
+    //   .then(json => {
+    //     this.setState({
+    //       isLoaded: true,
+    //     })
+    //   })
+    console.log("RERENDER APP")
+  }
+
+  submitSearch(event) {
+    event.preventDefault();
+    this.setState({
+      searchQuery: this.state.searchResult
+    })
   }
 
   //create updatesearch to set state
   updateSearch(event) {
+    const inputSearch = event.target.value;
     this.setState({
-      searchResult: event.target.value
-    });
+      searchResult: inputSearch
+    })
   }
-
 
   render() {
 
-    const { isLoaded } = this.state
+    // const { isLoaded } = this.state
 
-    if (!isLoaded) {
-      return <div>Loading....</div>
-    }
+    // if (!isLoaded) {
+    //   return <div>Loading....</div>
+    // }
     return (
       <React.Fragment>
         {/* pass updateSearch function into navigation bar */}
-        <Navigationbar updateSearch={this.updateSearch} />
+        <Navigationbar updateSearch={this.updateSearch} submitSearch={this.submitSearch} />
         <Jumbotron />
         <Router>
           <div className="App">
             <Switch>
               {/* pass search result into home */}
-              <Route exact path="/"
-                render={(props) =>
-                  <Home
-                    {...props}
-                    searchResult={this.state.searchResult}
-                  />}
-              />
+              <Route exact path="/" render={(props) => <Home searchQuery={this.state.searchQuery}/>} />
               <Route path="/about" component={About} />
               <Route path="/contact" component={Contact} />
             </Switch>

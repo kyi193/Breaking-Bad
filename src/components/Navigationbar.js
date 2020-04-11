@@ -33,7 +33,7 @@ export default class Navigationbar extends Component {
               <Nav.Item><Nav.Link href="/about">About</Nav.Link></Nav.Item>
               <Nav.Item><Nav.Link href="/contact">Contact</Nav.Link></Nav.Item>
             </Nav>
-            <Form inline>
+            <Form inline onSubmit={this.props.submitSearch}>
               <Form.Control 
                 type="text" 
                 placeholder="Search" 
@@ -41,7 +41,7 @@ export default class Navigationbar extends Component {
                 // pass update search into onchange
                 onChange = {this.props.updateSearch}
               />
-              <Button variant="outline-success">Search</Button>
+              <Button type="submit" variant="outline-success">Search</Button>
             </Form>
           </Navbar.Collapse>
         </Navbar>
