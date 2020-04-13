@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import styled from "styled-components";
 
@@ -38,66 +38,60 @@ color: black;
 `;
 
 export default class CharacterCard extends Component {
-    state = {
-        key: '',
-        name: '',
-        url: '',
-        birthday: '',
-        imageLoading: true,
-        tooManyRequests: false
-    };
+  state = {
+    charId: '',
+    name: '',
+    url: '',
+    birthday: '',
+    imageLoading: true,
+    tooManyRequests: false
+  };
 
-    componentDidMount() {
-        const {key, name, url, birthday} = this.props;
+  componentDidMount() {
+    const { charId, name, url, birthday } = this.props;
 
-        this.setState({
-            key,
-            name,
-            url,
-            birthday
-        });
-    }
-    render() {
-        return (
-            <div className="col-md-3 col-sm-6 mb-5">
-              <StyledLink to={`/character/${this.state.key}`}>
-                <Card className = "card">
-                    <h5 className="card-header">{this.state.key}</h5>
-                    {this.state.imageLoading ? (
-                        <img src={spinner} style={{width: '5em', height: '5em'}} className="card-img-top rounded mx-auto d-block mt-2"
-                        />
-                    ) : null}
-                    <Sprite 
-                        className="card-img-top rounded mx-auto mt-2"
-                        onLoad ={() => this.setState({ imageLoading: false })}
-                        onError = {() => this.setState({ tooManyRequests: true })}
-                        src={this.state.url}
-                        style={
-                            this.state.tooManyRequests ? { display:"none"} :
-                            this.state.imageLoading ? null : {display : "block"}
-                        }
-                    />
-                    {this.state.tooManyRequests ? (
-                        <h6 className="mx-auto">
-                            <span className="badge badge-danger mt-2"> Too Many Requests</span>
-                        </h6>
-                    ) : null}
-                    
-                    <div className="card-body mx-auto">
-                        <h6 className="card-title ">
-                            {this.state.name
-                            .toLowerCase()
-                            .split(" ")
-                            .map(
-                                letter => letter.charAt(0).toUpperCase() + letter.substring(1)
-                            )
-                            .join ('')}
-                        </h6>
-                    </div>
-                </Card>
-                </StyledLink>
+    this.setState({
+      charId,
+      name,
+      url,
+      birthday
+    });
+  }
+  render() {
+    return (
+      <div className="col-md-3 col-sm-6 mb-5">
+        <StyledLink to={`/character/${this.state.name}`}>
+          <Card className="card">
+            <h5 className="card-header">{this.state.name}</h5>
+            {this.state.imageLoading ? (
+              <img src={spinner} style={{ width: '5em', height: '5em' }} className="card-img-top rounded mx-auto d-block mt-2"
+              />
+            ) : null}
+            <Sprite
+              className="card-img-top rounded mx-auto mt-2"
+              onLoad={() => this.setState({ imageLoading: false })}
+              onError={() => this.setState({ tooManyRequests: true })}
+              src={this.state.url}
+              style={
+                this.state.tooManyRequests ? { display: "none" } :
+                  this.state.imageLoading ? null : { display: "block" }
+              }
+            />
+            {this.state.tooManyRequests ? (
+              <h6 className="mx-auto">
+                <span className="badge badge-danger mt-2"> Too Many Requests</span>
+              </h6>
+            ) : null}
+
+            <div className="card-body mx-auto">
+              <h6 className="card-title ">
+                {this.state.name}
+              </h6>
             </div>
-        );
-    }
+          </Card>
+        </StyledLink>
+      </div>
+    );
+  }
 }
 

@@ -2,3 +2,52 @@
   width: 100px;
   height: 150px;
 }
+
+#container {
+  padding: 30px;
+  border:1px solid black;
+  width: 1000px;
+  height: 800px;
+  margin: auto;
+}
+#left {
+  float: left;
+  padding-right:30px;
+  border-right: 7px solid white;
+}
+#charInfo {
+  padding-top: 50px;
+  padding-left: 50px;
+  color: white;
+  float: left;
+}
+
+#aboutContainer {
+  padding: 30px;
+  padding-top: 20px;
+  border:1px solid black;
+  width: max-content;
+  height: 800px;
+  margin: auto;
+}
+#video {
+  float: left;
+  padding-right:30px;
+  border-right: 7px solid white;
+}
+
+#aboutP {
+  float: left;
+  width: 500px;
+  color: white;
+}
+
+.App {
+  background-color: black;
+  height: 800px;
+}
+
+#aboutTitle {
+  color: white;
+  margin-bottom: 20px;
+}

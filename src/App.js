@@ -8,6 +8,9 @@ import Home from "./components/Home";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import { Jumbotron } from './components/Jumbotron';
+import Character from "./components/Character";
+import backgroundImage from './assets/background.jpg'
+
 import './App.css';
 
 // import 'bootstrap/dist/css/bootstrap.min.css';
@@ -69,7 +72,8 @@ class App extends Component {
           <div className="App">
             <Switch>
               {/* pass search result into home */}
-              <Route exact path="/" render={(props) => <Home searchQuery={this.state.searchQuery}/>} />
+              <Route exact path="/" render={(props) => <Home searchQuery={this.state.searchQuery} />} />
+              <Route exact path="/character/:key" component={Character} />
               <Route path="/about" component={About} />
               <Route path="/contact" component={Contact} />
             </Switch>

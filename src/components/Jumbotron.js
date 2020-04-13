@@ -8,6 +8,7 @@ import styled from 'styled-components';
 const Styles = styled.div`
   .jumbo  {
     background-size: cover;
+    margin-bottom: 0;
     color: #ccc;
     height: 30px;
     position: relative;

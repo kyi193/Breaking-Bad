@@ -4,8 +4,7 @@ import * as data from '../data/characters.json';
 
 import CharacterCard from "./CharacterCard";
 
-const DEFAULT_QUERY = '';
-const USE_MOCK_DATA = true;
+const USE_MOCK_DATA = false;
 
 export default class Home extends Component {
   constructor(props) {
@@ -51,7 +50,8 @@ export default class Home extends Component {
           <div className="row">
             {this.state.characters.map(character =>(
               <CharacterCard 
-                key = {character.char_id}
+                key = {character.name}
+                charId = {character.char_id}
                 name = {character.name}
                 url = {character.img}
                 birthday = {character.birthday}
