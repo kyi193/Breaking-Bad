@@ -44,10 +44,14 @@
 
 .App {
   background-color: black;
-  height: 800px;
+  height: max-content;
 }
 
 #aboutTitle {
   color: white;
   margin-bottom: 20px;
 }
+
+  .footer {
+    background-color:#565656;
+  }

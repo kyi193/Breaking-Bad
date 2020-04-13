@@ -78,7 +78,12 @@ class App extends Component {
               <Route path="/contact" component={Contact} />
             </Switch>
           </div>
+          <div class="footer text-center py-3">Data derived from:
+           <a href="https://www.breakingbadapi.com/"
+              target="_blank"> breakingbadapi.com/</a>
+          </div>
         </Router>
+
       </React.Fragment>
     );
   }
