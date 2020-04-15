@@ -23,18 +23,22 @@ export default class Home extends Component {
     if(prevProps.searchQuery !== this.props.searchQuery) {
       this.fetchCharacters(this.props.searchQuery);
     }
+    if(prevProps.visibility != this.props.visibility) {
+      this.fetchCharacters();
+    }
   }
 
   fetchCharacters(queryName='') {
-    if(USE_MOCK_DATA) {
-      
+    console.log("state: " + this.props.visibility)
+    if(!this.props.visibility) {
+      console.log("API fetched from: Characters.json")
       this.setState({
         characters: data.characters
       })
 
       return;
     }
-
+    console.log("API fetched from: BreakingBadAPI")
     axios.get(`https://www.breakingbadapi.com/api/characters?name=${queryName}`)
       .then((json) => {
         this.setState({

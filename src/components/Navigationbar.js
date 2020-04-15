@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import { Nav, Navbar, Form, Button } from 'react-bootstrap';
 import styled from 'styled-components';
+
+
 import logo from '../assets/logo.png'
 import navBackground from '../assets/headerBackground.jpg';
+
+import Toggle from './Toggle';
 
 const Styles = styled.div`
   .navbar {
@@ -30,6 +34,7 @@ export default class Navigationbar extends Component {
 
   render() {
     return (
+
       <Styles>
         <Navbar expand="lg">
           <Navbar.Brand href="/">
@@ -42,6 +47,7 @@ export default class Navigationbar extends Component {
               <Nav.Item><Nav.Link href="/about">About</Nav.Link></Nav.Item>
               <Nav.Item><Nav.Link href="/contact">Contact</Nav.Link></Nav.Item>
             </Nav>
+
             <Form inline onSubmit={this.props.submitSearch}>
               <Form.Control
                 type="text"
@@ -53,6 +59,7 @@ export default class Navigationbar extends Component {
               <Button type="submit" variant="outline-success">Search</Button>
             </Form>
           </Navbar.Collapse>
+          <button onClick={this.props.toggleVisibility}>API Fetch Toggle</button>
         </Navbar>
       </Styles>
     )
